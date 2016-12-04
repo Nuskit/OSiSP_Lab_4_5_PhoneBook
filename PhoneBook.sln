@@ -4,11 +4,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PhoneBookUI", "PhoneBookUI\PhoneBookUI.vcxproj", "{3551428D-6F46-4887-A324-B58608220930}"
-	ProjectSection(ProjectDependencies) = postProject
-		{6298D520-47F4-4516-BB3C-290FFD58A2CB} = {6298D520-47F4-4516-BB3C-290FFD58A2CB}
-	EndProjectSection
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PhoneBookDLL", "PhoneBookDLL\PhoneBookDLL.vcxproj", "{6298D520-47F4-4516-BB3C-290FFD58A2CB}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PhoneBookDLL", "PhoneBookDLL\PhoneBookDLL.vcxproj", "{FE54EDF2-EC28-4E95-B4AE-933E61ADB2AA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,14 +23,14 @@ Global
 		{3551428D-6F46-4887-A324-B58608220930}.Release|x64.Build.0 = Release|x64
 		{3551428D-6F46-4887-A324-B58608220930}.Release|x86.ActiveCfg = Release|Win32
 		{3551428D-6F46-4887-A324-B58608220930}.Release|x86.Build.0 = Release|Win32
-		{6298D520-47F4-4516-BB3C-290FFD58A2CB}.Debug|x64.ActiveCfg = Debug|x64
-		{6298D520-47F4-4516-BB3C-290FFD58A2CB}.Debug|x64.Build.0 = Debug|x64
-		{6298D520-47F4-4516-BB3C-290FFD58A2CB}.Debug|x86.ActiveCfg = Debug|Win32
-		{6298D520-47F4-4516-BB3C-290FFD58A2CB}.Debug|x86.Build.0 = Debug|Win32
-		{6298D520-47F4-4516-BB3C-290FFD58A2CB}.Release|x64.ActiveCfg = Release|x64
-		{6298D520-47F4-4516-BB3C-290FFD58A2CB}.Release|x64.Build.0 = Release|x64
-		{6298D520-47F4-4516-BB3C-290FFD58A2CB}.Release|x86.ActiveCfg = Release|Win32
-		{6298D520-47F4-4516-BB3C-290FFD58A2CB}.Release|x86.Build.0 = Release|Win32
+		{FE54EDF2-EC28-4E95-B4AE-933E61ADB2AA}.Debug|x64.ActiveCfg = Debug|x64
+		{FE54EDF2-EC28-4E95-B4AE-933E61ADB2AA}.Debug|x64.Build.0 = Debug|x64
+		{FE54EDF2-EC28-4E95-B4AE-933E61ADB2AA}.Debug|x86.ActiveCfg = Debug|Win32
+		{FE54EDF2-EC28-4E95-B4AE-933E61ADB2AA}.Debug|x86.Build.0 = Debug|Win32
+		{FE54EDF2-EC28-4E95-B4AE-933E61ADB2AA}.Release|x64.ActiveCfg = Release|x64
+		{FE54EDF2-EC28-4E95-B4AE-933E61ADB2AA}.Release|x64.Build.0 = Release|x64
+		{FE54EDF2-EC28-4E95-B4AE-933E61ADB2AA}.Release|x86.ActiveCfg = Release|Win32
+		{FE54EDF2-EC28-4E95-B4AE-933E61ADB2AA}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
