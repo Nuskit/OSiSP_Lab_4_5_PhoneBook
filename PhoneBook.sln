@@ -3,7 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PhoneBook", "PhoneBook\PhoneBook.vcxproj", "{6298D520-47F4-4516-BB3C-290FFD58A2CB}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PhoneBookUI", "PhoneBookUI\PhoneBookUI.vcxproj", "{3551428D-6F46-4887-A324-B58608220930}"
+	ProjectSection(ProjectDependencies) = postProject
+		{6298D520-47F4-4516-BB3C-290FFD58A2CB} = {6298D520-47F4-4516-BB3C-290FFD58A2CB}
+	EndProjectSection
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PhoneBookDLL", "PhoneBookDLL\PhoneBookDLL.vcxproj", "{6298D520-47F4-4516-BB3C-290FFD58A2CB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,6 +18,14 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3551428D-6F46-4887-A324-B58608220930}.Debug|x64.ActiveCfg = Debug|x64
+		{3551428D-6F46-4887-A324-B58608220930}.Debug|x64.Build.0 = Debug|x64
+		{3551428D-6F46-4887-A324-B58608220930}.Debug|x86.ActiveCfg = Debug|Win32
+		{3551428D-6F46-4887-A324-B58608220930}.Debug|x86.Build.0 = Debug|Win32
+		{3551428D-6F46-4887-A324-B58608220930}.Release|x64.ActiveCfg = Release|x64
+		{3551428D-6F46-4887-A324-B58608220930}.Release|x64.Build.0 = Release|x64
+		{3551428D-6F46-4887-A324-B58608220930}.Release|x86.ActiveCfg = Release|Win32
+		{3551428D-6F46-4887-A324-B58608220930}.Release|x86.Build.0 = Release|Win32
 		{6298D520-47F4-4516-BB3C-290FFD58A2CB}.Debug|x64.ActiveCfg = Debug|x64
 		{6298D520-47F4-4516-BB3C-290FFD58A2CB}.Debug|x64.Build.0 = Debug|x64
 		{6298D520-47F4-4516-BB3C-290FFD58A2CB}.Debug|x86.ActiveCfg = Debug|Win32

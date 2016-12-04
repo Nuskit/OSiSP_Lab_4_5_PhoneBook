@@ -6,6 +6,7 @@ BOOL APIENTRY DllMain( HMODULE hModule,
                        LPVOID lpReserved
 					 )
 {
+	MessageBox(0, L"Attack", L"", MB_OK);
 	switch (ul_reason_for_call)
 	{
 	case DLL_PROCESS_ATTACH:
