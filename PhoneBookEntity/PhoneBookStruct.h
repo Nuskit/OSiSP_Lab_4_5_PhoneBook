@@ -1,5 +1,7 @@
 #pragma once
-#include "stdafx.h"
+
+#define TCHAR wchar_t
+#define BOOL unsigned int
 
 #define PHONE_DB_PHONE_LEN      8
 #define PHONE_DB_LASTNAME_LEN   32
