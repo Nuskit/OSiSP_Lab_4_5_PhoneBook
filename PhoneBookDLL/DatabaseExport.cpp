@@ -19,7 +19,7 @@ UINT DatabaseExport::OpenDatabase(LPWSTR bdPathName)
 	int connectLink = lastHandler + 1;
 	try
 	{
-		connects[lastHandler] = new PhoneBookEntity(bdPathName);
+		connects[connectLink] = new PhoneBookEntity(bdPathName);
 		++lastHandler;
 	}
 	catch (...)

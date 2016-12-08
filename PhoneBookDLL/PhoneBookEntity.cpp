@@ -5,8 +5,8 @@
 
 PhoneBookEntity::PhoneBookEntity(LPWSTR bdPathName)
 {
-	fileHwnd = CreateFile(bdPathName, FILE_ALL_ACCESS, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
-	if (!fileHwnd)
+	fileHwnd = CreateFile(bdPathName, GENERIC_READ | GENERIC_WRITE, FILE_SHARE_READ | FILE_SHARE_WRITE, NULL, OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, NULL);
+	if (fileHwnd == INVALID_HANDLE_VALUE)
 		throw std::invalid_argument("Error file name\n");
 
 	LARGE_INTEGER fileSize;
@@ -16,9 +16,16 @@ PhoneBookEntity::PhoneBookEntity(LPWSTR bdPathName)
 		throw std::invalid_argument("Error file size\n");
 	}
 
-	phoneBd = fileSize.HighPart
-		? dynamic_cast<PhoneBookApi*>(new PhoneBookFile(fileHwnd, fileSize))
-		: dynamic_cast<PhoneBookApi*>(new PhoneBookMemory(fileHwnd, fileSize));
+	phoneBd = createBd(fileSize);
+}
+
+PhoneBookApi* PhoneBookEntity::createBd(const LARGE_INTEGER& fileSize)
+{
+	PhoneBookBD* bd=fileSize.HighPart
+		? new PhoneBookFile()
+		: dynamic_cast<PhoneBookBD*>(new PhoneBookMemory());
+	bd->init(fileHwnd, fileSize);
+	return bd;
 }
 
 PhoneBookEntity::~PhoneBookEntity()

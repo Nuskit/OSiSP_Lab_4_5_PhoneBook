@@ -4,3 +4,4 @@
 
 BOOL        LoadDatabaseDLL(void);
 BOOL        GetFilename(TCHAR *szFile);
+BOOL				CloseDatabaseDLL();

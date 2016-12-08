@@ -5,7 +5,7 @@
 class PhoneBookMemory :public PhoneBookBD
 {
 public:
-	PhoneBookMemory(HANDLE bdHandle, const LARGE_INTEGER& fileSize);
+	virtual void init(HANDLE bdHandle, const LARGE_INTEGER& fileSize) override;
 	~PhoneBookMemory();
 protected:
 	virtual bool tryAddPhoneBook(const PhoneBookStruct & phoneBook) override;
@@ -16,6 +16,6 @@ protected:
 	virtual DWORD getMapSizeHigh(const LARGE_INTEGER & fileSize) override;
 	virtual DWORD getMapSizeLow(const LARGE_INTEGER & fileSize) override;
 private:
-	bool getFreeBlock(PhoneBookStruct* freeBlock);
+	bool getFreeBlock(PhoneBookStruct*& freeBlock);
 	PhoneBookStruct* bdBase;
 };

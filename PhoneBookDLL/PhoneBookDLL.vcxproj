@@ -143,6 +143,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="AblTree.h" />
     <ClInclude Include="DatabaseExport.h" />
     <ClInclude Include="dllMain.h" />
     <ClInclude Include="PhoneBookApi.h" />

@@ -5,3 +5,4 @@
 void LoadDB(void);
 void SearchDB(void);
 void ShowDB(void);
+void AddDB(void);

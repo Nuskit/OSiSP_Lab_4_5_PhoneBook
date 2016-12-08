@@ -23,6 +23,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllMain.cpp" />
+    <ClCompile Include="PhoneBookStruct.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{BF50DF41-1AF9-4291-AD3A-B38529826EE4}</ProjectGuid>

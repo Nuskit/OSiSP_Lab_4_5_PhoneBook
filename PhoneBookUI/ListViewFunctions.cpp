@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "ListViewFunctions.h"
 #include <winnls.h>
+#include "PhoneBookStruct.h"
 
 extern HWND     g_hMainWindow;
 
@@ -32,13 +33,14 @@ int AddItemToListViewW(HWND hList, TCHAR *str, int nRow, int nCol)
     return 0;
 }
 
-int AddItemToListViewA(HWND hList, char *str, int nRow, int nCol)
-{
-    WCHAR buff[PHONE_DB_MAX_LEN * 2];
-
-    if (MultiByteToWideChar(CP_ACP, MB_COMPOSITE, str, -1, buff, PHONE_DB_MAX_LEN * 2) == 0) {
-        return EXIT_FAILURE;
-    }
-
-    return AddItemToListViewW(hList, buff, nRow, nCol);
-}
+//int AddItemToListViewA(HWND hList, char *str, int nRow, int nCol)
+//{
+//    WCHAR buff[SIZE_ENTITY * 2];
+//
+//    if (MultiByteToWideChar(CP_ACP, MB_COMPOSITE, str, -1, buff, SIZE_ENTITY * 2) == 0) {
+//        return EXIT_FAILURE;
+//    }
+//
+//    return AddItemToListViewW(hList, buff, nRow, nCol);
+//	return 0;
+//}

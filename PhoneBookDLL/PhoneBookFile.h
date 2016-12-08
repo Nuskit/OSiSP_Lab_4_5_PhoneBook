@@ -5,7 +5,7 @@
 class PhoneBookFile :public PhoneBookBD
 {
 public:
-	PhoneBookFile(HANDLE bdHandle, const LARGE_INTEGER& fileSize) :PhoneBookBD(bdHandle, fileSize) { throw std::runtime_error("Not implemented"); };
+	PhoneBookFile() { throw std::runtime_error("Not implemented"); };
 protected:
 	virtual DWORD getMapSizeHigh(const LARGE_INTEGER & fileSize) override;
 	virtual DWORD getMapSizeLow(const LARGE_INTEGER & fileSize) override;

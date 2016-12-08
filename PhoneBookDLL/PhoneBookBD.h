@@ -1,6 +1,7 @@
 #pragma once
 #include "stdafx.h"
 #include "PhoneBookStruct.h"
+#include "PhoneBookApi.h"
 
 #define MAX_COUNT_BLOCK_IN_MEMORY 1000
 #define MAX_COUNT_BLOCK_IN_FILE 1000000
@@ -9,10 +10,10 @@
 #define MAX_BD_IN_FILE_SIZE MAX_COUNT_BLOCK_IN_FILE * SIZE_ENTITY
 #define MAP_FILE_OBJECT_NAME TEXT("PHONE_BD")
 
-class PhoneBookBD
+class PhoneBookBD: public PhoneBookApi
 {
 public:
-	PhoneBookBD(HANDLE bdHandle, const LARGE_INTEGER& fileSize);
+	virtual void init(HANDLE bdHandle, const LARGE_INTEGER& fileSize);
 	virtual ~PhoneBookBD();
 	bool addPhoneBook(const PhoneBookStruct& phoneBook);
 	bool deletePhoneBook(ULONG index);

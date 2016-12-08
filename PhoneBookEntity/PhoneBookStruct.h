@@ -1,7 +1,5 @@
 #pragma once
-
-#define TCHAR wchar_t
-#define BOOL unsigned int
+#include <Windows.h>
 
 #define PHONE_DB_PHONE_LEN      8
 #define PHONE_DB_LASTNAME_LEN   32
@@ -26,3 +24,11 @@ struct PhoneBookStruct
 };
 
 #define SIZE_ENTITY sizeof(PhoneBookStruct)
+
+struct ListPhoneBookStruct
+{
+	ListPhoneBookStruct(PhoneBookStruct* copyPhoneBook, UINT size);
+	~ListPhoneBookStruct();
+	UINT count;
+	PhoneBookStruct* phoneBook;
+};

@@ -21,32 +21,33 @@ BOOL APIENTRY DllMain( HMODULE hModule,
 	return TRUE;
 }
 
-PHONEBOOKDLL_API UINT PhoneBookEntity::OpenDatabase(LPWSTR bdPathName)
+PHONEBOOKDLL_API UINT OpenDatabase(LPWSTR bdPathName)
 {
 	return databaseExport.OpenDatabase(bdPathName);
 }
 
-PHONEBOOKDLL_API bool PhoneBookEntity::CloseDatabase(UINT handler)
+PHONEBOOKDLL_API bool CloseDatabase(UINT handler)
 {
 	return databaseExport.CloseDatabase(handler);
 }
 
-PHONEBOOKDLL_API bool PhoneBookEntity::AddPhoneBook(UINT handler, const PhoneBookStruct & phoneBook)
+PHONEBOOKDLL_API bool AddPhoneBook(UINT handler, const PhoneBookStruct & phoneBook)
 {
 	return databaseExport.addPhoneBook(handler, phoneBook);
 }
 
-PHONEBOOKDLL_API bool PhoneBookEntity::DeletePhoneBook(UINT handler, ULONG index)
+PHONEBOOKDLL_API bool DeletePhoneBook(UINT handler, ULONG index)
 {
 	return databaseExport.deletePhoneBook(handler, index);
 }
 
-PHONEBOOKDLL_API bool PhoneBookEntity::ChangePhoneBook(UINT handler, ULONG index, const PhoneBookStruct & phoneBook)
+PHONEBOOKDLL_API bool ChangePhoneBook(UINT handler, ULONG index, const PhoneBookStruct & phoneBook)
 {
 	return databaseExport.changePhoneBook(handler, index, phoneBook);
 }
 
-PHONEBOOKDLL_API std::vector<PhoneBookStruct> PhoneBookEntity::GetPhoneBook(UINT handler, ULONG index, ULONG count)
+PHONEBOOKDLL_API ListPhoneBookStruct* GetPhoneBook(UINT handler, ULONG index, ULONG count)
 {
-	return databaseExport.getPhoneBook(handler, index, count);
+	auto listPhoneBook = databaseExport.getPhoneBook(handler, index, count);
+	return new ListPhoneBookStruct(listPhoneBook.data(), listPhoneBook.size());
 }

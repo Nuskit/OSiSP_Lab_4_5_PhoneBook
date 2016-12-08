@@ -1,9 +1,13 @@
 #include "stdafx.h"
 #include "PhoneBookMemory.h"
 
-PhoneBookMemory::PhoneBookMemory(HANDLE bdHandle, const LARGE_INTEGER & fileSize) : PhoneBookBD(bdHandle, fileSize),
-bdBase(static_cast<PhoneBookStruct*>(getMappingData(getMapSizeLow(fileSize), getMapSizeHigh(fileSize), MAX_BD_IN_MEMORY_SIZE)))
+#define OFFSET_LOW 0
+#define OFFSET_HIGH 0
+
+void PhoneBookMemory::init(HANDLE bdHandle, const LARGE_INTEGER & fileSize)
 {
+	PhoneBookBD::init(bdHandle, fileSize);
+	bdBase = static_cast<PhoneBookStruct*>(getMappingData(OFFSET_LOW, OFFSET_HIGH, MAX_BD_IN_MEMORY_SIZE));
 }
 
 PhoneBookMemory::~PhoneBookMemory()
@@ -21,7 +25,7 @@ DWORD PhoneBookMemory::getMapSizeLow(const LARGE_INTEGER & fileSize)
 	return MAX_BD_IN_MEMORY_SIZE;
 }
 
-bool PhoneBookMemory::getFreeBlock(PhoneBookStruct* freeBlock)
+bool PhoneBookMemory::getFreeBlock(PhoneBookStruct*& freeBlock)
 {
 	freeBlock = bdBase;
 	ULONG count = 0;
@@ -58,5 +62,15 @@ bool PhoneBookMemory::tryChangePhoneBook(ULONG index, const PhoneBookStruct & ph
 
 std::vector<PhoneBookStruct> PhoneBookMemory::tryGetPhoneBook(ULONG index, ULONG count)
 {
-	return std::vector<PhoneBookStruct>(&bdBase[index], &bdBase[index] + count);
+	std::vector<PhoneBookStruct> listPhoneBook;
+	while (index < MAX_COUNT_BLOCK_IN_MEMORY && count>0)
+	{
+		if (bdBase[index].isFree)
+		{
+			--count;
+			listPhoneBook.push_back(bdBase[index]);
+		}
+		++index;
+	}
+	return listPhoneBook;
 }

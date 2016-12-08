@@ -1,7 +1,7 @@
 #include "stdafx.h"
 #include "PhoneBookBD.h"
 
-PhoneBookBD::PhoneBookBD(HANDLE bdHandle, const LARGE_INTEGER& fileSize)
+void PhoneBookBD::init(HANDLE bdHandle, const LARGE_INTEGER& fileSize)
 {
 	fileMapping = CreateFileMapping(bdHandle, NULL, PAGE_READWRITE, getSizeHigh(fileSize), getSizeLow(fileSize), MAP_FILE_OBJECT_NAME);
 	if (!fileMapping)
@@ -35,7 +35,7 @@ std::vector<PhoneBookStruct> PhoneBookBD::getPhoneBook(ULONG index, ULONG count)
 
 LPVOID PhoneBookBD::getMappingData(DWORD offsetLow, DWORD offsetHigh, SIZE_T length)
 {
-	return MapViewOfFile(fileMapping, FILE_MAP_ALL_ACCESS, offsetHigh, offsetLow, length);
+	return MapViewOfFile(fileMapping, FILE_MAP_READ | FILE_MAP_WRITE, offsetHigh, offsetLow, length);
 }
 
 DWORD PhoneBookBD::getSizeLow(const LARGE_INTEGER & fileSize)

@@ -26,6 +26,6 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
 		TranslateMessage(&msg);
 		DispatchMessage(&msg);
 	}
-
+	CloseDatabaseDLL();
 	return int(msg.wParam);
 }

@@ -12,6 +12,7 @@ public:
 	virtual bool changePhoneBook(ULONG index, const PhoneBookStruct & phoneBook) override;
 	virtual std::vector<PhoneBookStruct> getPhoneBook(ULONG index, ULONG count = 1) override;
 private:
+	PhoneBookApi* createBd(const LARGE_INTEGER& fileSize);
 	void clearUp();
 
 	HANDLE fileHwnd;
