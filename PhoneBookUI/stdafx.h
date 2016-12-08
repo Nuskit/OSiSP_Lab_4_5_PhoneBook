@@ -25,3 +25,4 @@ typedef bool (*ADDPHONEBOOKROUTINE)(UINT handler, const PhoneBookStruct& phoneBo
 typedef bool (*DELETEPHONEBOOKROUTINE)(UINT handler, ULONG index);
 typedef bool (*CHANGEPHONEBOOK)(UINT handler, ULONG index, const PhoneBookStruct& phoneBook);
 typedef ListPhoneBookStruct* (*GETPHONEBOOKROUTINE)(UINT handler, ULONG index, ULONG count);
+typedef ListPhoneBookStruct* (*FINDPHONEBOOKROUTINE)(UINT handler, const PhoneBookStruct& phoneBook);

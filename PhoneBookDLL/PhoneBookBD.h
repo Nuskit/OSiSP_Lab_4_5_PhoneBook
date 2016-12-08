@@ -19,14 +19,16 @@ public:
 	bool deletePhoneBook(ULONG index);
 	bool changePhoneBook(ULONG index, const PhoneBookStruct& phoneBook);
 	std::vector<PhoneBookStruct> getPhoneBook(ULONG index, ULONG count = 1);
+
+
+	virtual DWORD getMapSizeHigh(const LARGE_INTEGER& fileSize) = 0;
+	virtual DWORD getMapSizeLow(const LARGE_INTEGER& fileSize) = 0;
 protected:
 	virtual bool tryAddPhoneBook(const PhoneBookStruct& phoneBook) = 0;
 	virtual bool tryDeletePhoneBook(ULONG index) = 0;
 	virtual bool tryChangePhoneBook(ULONG index, const PhoneBookStruct& phoneBook) = 0;
 	virtual std::vector<PhoneBookStruct> tryGetPhoneBook(ULONG index, ULONG count = 1) = 0;
 	virtual bool isInZone(ULONG index) const = 0;
-	virtual DWORD getMapSizeHigh(const LARGE_INTEGER& fileSize) = 0;
-	virtual DWORD getMapSizeLow(const LARGE_INTEGER& fileSize) = 0;
 	LPVOID getMappingData(DWORD offsetLow, DWORD offsetHigh, SIZE_T length);
 private:
 	DWORD getSizeLow(const LARGE_INTEGER& fileSize);

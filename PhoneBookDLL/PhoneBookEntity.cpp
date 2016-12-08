@@ -2,6 +2,7 @@
 #include "PhoneBookEntity.h"
 #include "PhoneBookMemory.h"
 #include "PhoneBookFile.h"
+#include "SearchIndexes.h"
 
 PhoneBookEntity::PhoneBookEntity(LPWSTR bdPathName)
 {
@@ -25,7 +26,7 @@ PhoneBookApi* PhoneBookEntity::createBd(const LARGE_INTEGER& fileSize)
 		? new PhoneBookFile()
 		: dynamic_cast<PhoneBookBD*>(new PhoneBookMemory());
 	bd->init(fileHwnd, fileSize);
-	return bd;
+	return new SearchIndexes<std::wstring>(bd, 0);
 }
 
 PhoneBookEntity::~PhoneBookEntity()
@@ -37,6 +38,16 @@ PhoneBookEntity::~PhoneBookEntity()
 void PhoneBookEntity::clearUp()
 {
 	CloseHandle(fileHwnd);
+}
+
+PhoneBookStruct PhoneBookEntity::getConcreteBook(ULONG index)
+{
+	throw std::logic_error("Not implemented");
+}
+
+std::vector<PhoneBookStruct> PhoneBookEntity::findPhoneBook(const PhoneBookStruct & phoneBook, int index)
+{
+	return phoneBd->findPhoneBook(phoneBook, index);
 }
 
 bool PhoneBookEntity::addPhoneBook(const PhoneBookStruct & phoneBook)

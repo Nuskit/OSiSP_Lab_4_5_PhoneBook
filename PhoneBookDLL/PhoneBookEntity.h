@@ -17,4 +17,8 @@ private:
 
 	HANDLE fileHwnd;
 	PhoneBookApi *phoneBd;
+	virtual PhoneBookStruct getConcreteBook(ULONG index) override;
+
+	// Унаследовано через PhoneBookApi
+	virtual std::vector<PhoneBookStruct> findPhoneBook(const PhoneBookStruct & phoneBook, int index) override;
 };

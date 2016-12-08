@@ -151,6 +151,7 @@
     <ClInclude Include="PhoneBookEntity.h" />
     <ClInclude Include="PhoneBookFile.h" />
     <ClInclude Include="PhoneBookMemory.h" />
+    <ClInclude Include="SearchIndexes.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>

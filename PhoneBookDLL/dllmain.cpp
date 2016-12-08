@@ -51,3 +51,9 @@ PHONEBOOKDLL_API ListPhoneBookStruct* GetPhoneBook(UINT handler, ULONG index, UL
 	auto listPhoneBook = databaseExport.getPhoneBook(handler, index, count);
 	return new ListPhoneBookStruct(listPhoneBook.data(), listPhoneBook.size());
 }
+
+PHONEBOOKDLL_API ListPhoneBookStruct* FindPhoneBook(UINT handler, const PhoneBookStruct& phoneBook)
+{
+	auto listPhoneBook = databaseExport.findPhoneBook(handler, phoneBook);
+	return new ListPhoneBookStruct(listPhoneBook.data(), listPhoneBook.size());
+}

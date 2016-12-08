@@ -8,6 +8,7 @@ ADDPHONEBOOKROUTINE addPhoneBookRoutine;
 DELETEPHONEBOOKROUTINE deletePhoneBookRoutine;
 CHANGEPHONEBOOK changePhoneBook;
 GETPHONEBOOKROUTINE getPhoneBook;
+FINDPHONEBOOKROUTINE findPhoneBook;
 
 extern HINSTANCE        hInst;
 extern HWND             g_hMainWindow;
@@ -32,8 +33,9 @@ BOOL LoadDatabaseDLL(void)
 		deletePhoneBookRoutine = DELETEPHONEBOOKROUTINE(GetProcAddress(hModule, "DeletePhoneBook"));
 		changePhoneBook = CHANGEPHONEBOOK(GetProcAddress(hModule, "ChangePhoneBook"));
 		getPhoneBook = GETPHONEBOOKROUTINE(GetProcAddress(hModule, "GetPhoneBook"));
-
-		if (!(openDatabaseRoutine && closeDatabaseRoutine && addPhoneBookRoutine && deletePhoneBookRoutine && changePhoneBook && getPhoneBook)) {
+		findPhoneBook = FINDPHONEBOOKROUTINE(GetProcAddress(hModule, "FindPhoneBook"));
+		if (!(openDatabaseRoutine && closeDatabaseRoutine && addPhoneBookRoutine 
+			&& deletePhoneBookRoutine && changePhoneBook && getPhoneBook && findPhoneBook)) {
 			error = GetLastError();
 		}
 	}

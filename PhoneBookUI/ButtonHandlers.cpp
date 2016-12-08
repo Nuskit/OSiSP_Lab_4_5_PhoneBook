@@ -17,6 +17,7 @@ extern ADDPHONEBOOKROUTINE addPhoneBookRoutine;
 extern DELETEPHONEBOOKROUTINE deletePhoneBookRoutine;
 extern CHANGEPHONEBOOK changePhoneBook;
 extern GETPHONEBOOKROUTINE getPhoneBook;
+extern FINDPHONEBOOKROUTINE findPhoneBook;
 
 UINT handler = -1;
 
@@ -58,53 +59,58 @@ void ShowDB(void)
 
 void SearchDB(void)
 {
-	//    PHONE_DB_RECORD recTemplate;
-	//
-	//    if (g_DatabasePtr == nullptr) {
-	//        MessageBox(g_hMainWindow, TEXT("Error: First you must download a DB"), nullptr, MB_OK);
-	//        return;
-	//    }
-	//
-	//    GetWindowTextA(g_hInputBox[0], recTemplate->phone, sizeof recTemplate->phone);
-	//    GetWindowTextA(g_hInputBox[1], recTemplate->lastname, sizeof recTemplate->lastname);
-	//    GetWindowTextA(g_hInputBox[2], recTemplate->name, sizeof recTemplate->name);
-	//    GetWindowTextA(g_hInputBox[3], recTemplate->patronym, sizeof recTemplate->patronym);
-	//    GetWindowTextA(g_hInputBox[4], recTemplate->street, sizeof recTemplate->street);
-	//    GetWindowTextA(g_hInputBox[5], recTemplate->house, sizeof recTemplate->house);
-	//    GetWindowTextA(g_hInputBox[6], recTemplate->housing, sizeof recTemplate->housing);
-	//    GetWindowTextA(g_hInputBox[7], recTemplate->apartment, sizeof recTemplate->apartment);
-	//
-	//    auto countOfNotEmtyFields = 0;
-	//
-	//#define CHECK_IF_FIELD_NOT_EMPTY(field_name)\
-	//    if (recTemplate->field_name[0] != '\0') countOfNotEmtyFields++;
-	//
-	//    CHECK_IF_FIELD_NOT_EMPTY(phone);
-	//    CHECK_IF_FIELD_NOT_EMPTY(lastname);
-	//    CHECK_IF_FIELD_NOT_EMPTY(name);
-	//    CHECK_IF_FIELD_NOT_EMPTY(street);
-	//    CHECK_IF_FIELD_NOT_EMPTY(patronym);
-	//    CHECK_IF_FIELD_NOT_EMPTY(house);
-	//    CHECK_IF_FIELD_NOT_EMPTY(housing);
-	//    CHECK_IF_FIELD_NOT_EMPTY(apartment);
-	//
-	//#undef CHECK_IF_FIELD_NOT_EMPTY
-	//
-	//    if (countOfNotEmtyFields > 0) {
-	//        Display(&recTemplate, countOfNotEmtyFields);
-	//    } else {
-	//        MessageBox(g_hMainWindow, TEXT("Enter data to search!"), nullptr, MB_OK);
-	//    }
-}
-
-void AddDB(void)
-{
 	PhoneBookStruct recTemplate;
 
 	if (handler == -1) {
 		MessageBox(g_hMainWindow, TEXT("Error: First you must download a DB"), nullptr, MB_OK);
 		return;
 	}
+
+	GetWindowText(g_hInputBox[0], recTemplate.phone, sizeof recTemplate.phone);
+	GetWindowText(g_hInputBox[1], recTemplate.lastName, sizeof recTemplate.lastName);
+	GetWindowText(g_hInputBox[2], recTemplate.firstName, sizeof recTemplate.firstName);
+	GetWindowText(g_hInputBox[3], recTemplate.patronym, sizeof recTemplate.patronym);
+	GetWindowText(g_hInputBox[4], recTemplate.street, sizeof recTemplate.street);
+	GetWindowText(g_hInputBox[5], recTemplate.house, sizeof recTemplate.house);
+	GetWindowText(g_hInputBox[6], recTemplate.housing, sizeof recTemplate.housing);
+	GetWindowText(g_hInputBox[7], recTemplate.apartment, sizeof recTemplate.apartment);
+	recTemplate.isFree = 1;
+	
+	auto listPhoneBook = findPhoneBook(handler, recTemplate);
+	Display(*listPhoneBook);
+	delete listPhoneBook;
+}
+
+void AddDB(void)
+{
+	PhoneBookStruct recTemplate = { 0 };
+	recTemplate.isFree = 1;
+
+	if (handler == -1) {
+		MessageBox(g_hMainWindow, TEXT("Error: First you must download a DB"), nullptr, MB_OK);
+		return;
+	}
+
+	for (int i = 0; i < 100; i++)
+	{
+		static std::string charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
+	
+	#define CHANGE(object)\
+	\
+		for (int j = 0; j < sizeof(recTemplate.object)/sizeof(TCHAR)-1; j++)\
+			recTemplate.object[j] = charset[rand() % charset.length()];\
+
+	CHANGE(phone);
+	CHANGE(lastName);
+	CHANGE(firstName);
+	CHANGE(patronym);
+	CHANGE(street);
+	CHANGE(house);
+	CHANGE(housing);
+	CHANGE(apartment);
+
+	addPhoneBookRoutine(handler, recTemplate);
+}
 
 	GetWindowText(g_hInputBox[0], recTemplate.phone, sizeof recTemplate.phone);
 	GetWindowText(g_hInputBox[1], recTemplate.lastName, sizeof recTemplate.lastName);
@@ -128,7 +134,7 @@ void AddDB(void)
 //
 //#define CHANGE(object)\
 //\
-//		for (int i = 0; i < sizeof(recTemplate.object); i++)\
+//		for (int i = 0; i < sizeof(recTemplate.object)/sizeof(TCHAR); i++)\
 //			recTemplate.object[i] = charset[rand() % charset.length()];\
 //
 //	CHANGE(phone);

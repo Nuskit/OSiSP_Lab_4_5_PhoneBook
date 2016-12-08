@@ -35,3 +35,13 @@ bool PhoneBookFile::isInZone(ULONG index) const
 {
 	return false;
 }
+
+std::vector<PhoneBookStruct> PhoneBookFile::findPhoneBook(const PhoneBookStruct & phoneBook, int index)
+{
+	return std::vector<PhoneBookStruct>();
+}
+
+PhoneBookStruct PhoneBookFile::getConcreteBook(ULONG index)
+{
+	return PhoneBookStruct();
+}

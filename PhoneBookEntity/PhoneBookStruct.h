@@ -2,13 +2,13 @@
 #include <Windows.h>
 
 #define PHONE_DB_PHONE_LEN      8
-#define PHONE_DB_LASTNAME_LEN   32
-#define PHONE_DB_NAME_LEN       32
+#define PHONE_DB_LASTNAME_LEN   4
+#define PHONE_DB_NAME_LEN       4
 #define PHONE_DB_PATRONYM_LEN   32
 #define PHONE_DB_STREET_LEN     30
-#define PHONE_DB_HOUSE_LEN      8
-#define PHONE_DB_HOUSING_LEN    8
-#define PHONE_DB_APARTMENT_LEN  8
+#define PHONE_DB_HOUSE_LEN      22
+#define PHONE_DB_HOUSING_LEN    22
+#define PHONE_DB_APARTMENT_LEN  4
 
 struct PhoneBookStruct
 {

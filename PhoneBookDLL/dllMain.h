@@ -16,3 +16,4 @@ PHONEBOOKDLL_API bool AddPhoneBook(UINT handler, const PhoneBookStruct& phoneBoo
 PHONEBOOKDLL_API bool DeletePhoneBook(UINT handler, ULONG index);
 PHONEBOOKDLL_API bool ChangePhoneBook(UINT handler, ULONG index, const PhoneBookStruct& phoneBook);
 PHONEBOOKDLL_API ListPhoneBookStruct* GetPhoneBook(UINT handler, ULONG index, ULONG count = 1);
+PHONEBOOKDLL_API ListPhoneBookStruct* FindPhoneBook(UINT handler, const PhoneBookStruct& phoneBook);

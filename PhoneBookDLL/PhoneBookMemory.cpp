@@ -34,6 +34,16 @@ bool PhoneBookMemory::getFreeBlock(PhoneBookStruct*& freeBlock)
 	return count <= MAX_COUNT_BLOCK_IN_MEMORY;
 }
 
+std::vector<PhoneBookStruct> PhoneBookMemory::findPhoneBook(const PhoneBookStruct & phoneBook, int index)
+{
+	return std::vector<PhoneBookStruct>();
+}
+
+PhoneBookStruct PhoneBookMemory::getConcreteBook(ULONG index)
+{
+	return bdBase[index];
+}
+
 bool PhoneBookMemory::isInZone(ULONG index) const
 {
 	return index < MAX_COUNT_BLOCK_IN_MEMORY;

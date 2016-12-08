@@ -7,6 +7,7 @@ class PhoneBookMemory :public PhoneBookBD
 public:
 	virtual void init(HANDLE bdHandle, const LARGE_INTEGER& fileSize) override;
 	~PhoneBookMemory();
+	virtual PhoneBookStruct getConcreteBook(ULONG index) override;
 protected:
 	virtual bool tryAddPhoneBook(const PhoneBookStruct & phoneBook) override;
 	virtual bool tryDeletePhoneBook(ULONG index) override;
@@ -18,4 +19,7 @@ protected:
 private:
 	bool getFreeBlock(PhoneBookStruct*& freeBlock);
 	PhoneBookStruct* bdBase;
+
+	// Унаследовано через PhoneBookBD
+	virtual std::vector<PhoneBookStruct> findPhoneBook(const PhoneBookStruct & phoneBook, int index) override;
 };

@@ -81,3 +81,13 @@ std::vector<PhoneBookStruct> DatabaseExport::getPhoneBook(UINT handler, ULONG in
 	}
 	return std::vector<PhoneBookStruct>();
 }
+
+std::vector<PhoneBookStruct> DatabaseExport::findPhoneBook(UINT handler, const PhoneBookStruct& phoneBook)
+{
+	auto itMapConnects = connects.find(handler);
+	if (itMapConnects != connects.end())
+	{
+		return (*itMapConnects).second->findPhoneBook(phoneBook, -1);
+	}
+	return std::vector<PhoneBookStruct>();
+}
